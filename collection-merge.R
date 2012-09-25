@@ -1,6 +1,6 @@
 setMethod("+", signature("collection", "collection"), 
           function (e1, e2) {
-            mm <- merge (e1, e2, all = TRUE, by = 0, sort = TRUE)
+            mm <- merge (e1$count, e2$count, all = TRUE, by = 0, sort = TRUE)
             rownames (mm) <- mm$Row.names
             mm$Row.names <- NULL
             as.matrix (mm)
