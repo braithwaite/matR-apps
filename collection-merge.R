@@ -1,9 +1,9 @@
 setMethod("+", signature("collection", "collection"), 
           function (e1, e2) {
-            mm <- merge(Waters$count,Guts$count,all=TRUE,by=0,sort=TRUE)
-            rownames(mm) <- mm$Row.names
+            mm <- merge (e1, e2, all = TRUE, by = 0, sort = TRUE)
+            rownames (mm) <- mm$Row.names
             mm$Row.names <- NULL
-            as.matrix(mm)
+            as.matrix (mm)
 
 #             if (!identical (viewnames (e1), viewnames(e2)))
 #               warning ("only views in common will be retained")
