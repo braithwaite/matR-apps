@@ -28,7 +28,9 @@ setMethod ("+", signature ("collection", "collection"),
               m <- merge (e1@data [[j]], e2@data [[j]], all = TRUE, by = 0, sort = TRUE)
               rownames (m) <- m$Row.names
               m$Row.names <- NULL
-              cc@data [[j]] <- new ("mmatrix", data = Matrix::Matrix(as.matrix(m)))
+		m <- as.matrix (m)
+		m [is.na(m)] <- 0
+              cc@data [[j]] <- new ("mmatrix", data = Matrix::Matrix(m))
             }
             viewnames (cc) <- v
             cc
