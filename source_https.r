@@ -8,6 +8,14 @@ source_https <- function(url, ...) {
 	     })
 	}
 
+
+# prerequirements
+# at the shell
+# > sudo apt-get install libcurl4-openssl-dev
+# in R
+# > install.packages("RCurl")
+
+
 # Example
 # source_https("https://raw.github.com/tonybreyal/Blog-Reference-Functions/master/R/bingSearchXScraper/bingSearchXScraper.R", "https://raw.github.com/tonybreyal/Blog-Reference-Functions/master/R/htmlToText/htmlToText.R"))
 
