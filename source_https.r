@@ -8,6 +8,7 @@ source_https <- function(url, ...) {
 	     })
 	}
 
-source_https("https://raw.github.com/tonybreyal/Blog-Reference-Functions/master/R/bingSearchXScraper/bingSearchXScraper.R", "https://raw.github.com/tonybreyal/Blog-Reference-Functions/master/R/htmlToText/htmlToText.R"))
+# Example
+# source_https("https://raw.github.com/tonybreyal/Blog-Reference-Functions/master/R/bingSearchXScraper/bingSearchXScraper.R", "https://raw.github.com/tonybreyal/Blog-Reference-Functions/master/R/htmlToText/htmlToText.R"))
 
 # NOTE: This function is from http://tonybreyal.wordpress.com/2011/11/24/source_https-sourcing-an-r-script-from-github/
