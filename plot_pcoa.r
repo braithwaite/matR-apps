@@ -1,7 +1,3 @@
-write_file <- function(file_name, data) {
-  write.table(data, file=file_name, col.names=NA, row.names=TRUE, append = FALSE, sep="\t", quote = FALSE)
-}
-
 plot_pco <- function(
                      input_matrix,
                      input_dir = "./",
@@ -16,6 +12,11 @@ plot_pco <- function(
                      )
   
 {
+
+  write_file <- function(file_name, data) {
+    write.table(data, file=file_name, col.names=NA, row.names=TRUE, append = FALSE, sep="\t", quote = FALSE)
+  }   
+
   # load packages
   suppressPackageStartupMessages(library(matlab))      
   suppressPackageStartupMessages(library(ecodist))
