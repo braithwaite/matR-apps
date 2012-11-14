@@ -83,10 +83,8 @@ plot_pco <- function(
   }
 
   # load data - using matrix or file name
-  my_data <- input_matrix
+  my_data <- matrix
   
-  
-
   num_data_rows = dim(my_data)[1] # substitute 0 for NA's if they exist in the data
   num_data_cols = dim(my_data)[2]
   for (row_num in (1:num_data_rows)){
@@ -144,8 +142,7 @@ plot_pco <- function(
   pdf(file = gsub(" ", "", paste(file_in, ".", dist_method,".PCoA.pdf")))
     plot(
          x<-my_pco[,PC1],
-         y<-my_pco[,PC2],
-         
+         y<-my_pco[,PC2],     
          type="n",
          xlab = eigen_value.names[PC1],
          ylab = eigen_value.names[PC2],
@@ -153,9 +150,7 @@ plot_pco <- function(
          )
     my_cex <- 1
     points(x=(sorted_my_data[,PC1]), y=(sorted_my_data[,PC2]), pch=23, col = colors, bg = colors, cex=my_cex) #C
-
     title( (paste(file_in,"\n", "PC", PC1, "vs PC", PC2 )), cex.main = 0.8)
-        
     dev.off()
   
 }
