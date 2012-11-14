@@ -147,7 +147,7 @@ plot_pcoa <- function(
          cex = 0.8
          )
     my_cex <- 1
-    points(x=(sorted_my_data[,PC1]), y=(sorted_my_data[,PC2]), pch=23, col = colors, bg = colors, cex=my_cex) #C
+    points(x=(my_data[,PC1]), y=(my_data[,PC2]), pch=23, col = colors, bg = colors, cex=my_cex) #C
     title( (paste(file_in,"\n", "PC", PC1, "vs PC", PC2 )), cex.main = 0.8)
     dev.off()
   
