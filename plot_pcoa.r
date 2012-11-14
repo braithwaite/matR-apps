@@ -137,7 +137,7 @@ plot_pcoa <- function(
 
   write.table(eigen_vectors, file=PCoA_file_out, col.names=FALSE, row.names=TRUE, append = TRUE, sep="\t")
 
-  pdf(file = gsub(" ", "", paste(file_in, ".", dist_method,".PCoA.pdf")))
+  png(file = gsub(" ", "", paste(file_in, ".", dist_method,".PCoA.png")))
   plot(
        x<-eigen_vectors[,PC1],
        y<-eigen_vectors[,PC2],     
