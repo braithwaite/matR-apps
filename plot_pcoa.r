@@ -9,8 +9,8 @@ plot_pcoa <- function(
                      dist_method = "euclidean",
                      headers = 1,
                      colors = "blue",
-                     PC1 = "PC1",
-                     PC2 = "PC2"
+                     PC1 = "1",
+                     PC2 = "2"
                      )
   
 {
