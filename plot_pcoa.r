@@ -1,6 +1,6 @@
 plot_pco <- function(
-                     input_matrix = NULL,
-                     file_in = "my_file",
+                     matrix = NULL,
+                     file_in = "matrix_object",
                      input_dir = "./",
                      output_PCoA_dir = "./",
                      print_dist = 1,
@@ -78,16 +78,12 @@ plot_pco <- function(
     func_usage()
   }
 
-  # load data - using matrix or file name
-
-  if (file_in != "my_file"){
-    input_data_path = gsub(" ", "", paste(input_dir, file_in))
-    writeLines("INPUT-DATA-PATH")
-    writeLines(input_data_path)
-    my_data <- flipud(rot90(data.matrix(read.table(input_data_path, row.names=1, header=TRUE, sep="\t", comment.char="", quote=""))))
-  } else {
-    my_data <- input_matrix
+  if ( matrix == NULL ){
+    func_usage()
   }
+
+  # load data - using matrix or file name
+  my_data <- input_matrix
   
   
 
