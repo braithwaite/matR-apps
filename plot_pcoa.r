@@ -139,11 +139,11 @@ plot_pcoa <- function(
 
   pdf(file = gsub(" ", "", paste(file_in, ".", dist_method,".PCoA.pdf")))
     plot(
-         x<-my_pco[,PC1],
-         y<-my_pco[,PC2],     
+         x<-my_pco$vectors[,PC1],
+         y<-my_pco$vectors[,PC2],     
          type="n",
-         xlab = eigen_value.names[PC1],
-         ylab = eigen_value.names[PC2],
+         xlab = scaled_eigen_values[PC1],
+         ylab = scaled_eigen_values[PC2],
          cex = 0.8
          )
     my_cex <- 1
