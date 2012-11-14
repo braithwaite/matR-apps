@@ -7,7 +7,7 @@ plot_pco <- function(
                      dist_method = "euclidean",
                      headers = 1,
                      PC1 = "PC1",
-                     PC2 = "PC2",
+                     PC2 = "PC2"
                      )
   
 {
