@@ -1,5 +1,6 @@
 plot_pco <- function(
-                     input_matrix,
+                     input_matrix = NULL,
+                     file_name = "my_file",
                      input_dir = "./",
                      output_PCoA_dir = "./",
                      print_dist = 1,
@@ -15,8 +16,6 @@ plot_pco <- function(
   # load packages
   suppressPackageStartupMessages(library(matlab))      
   suppressPackageStartupMessages(library(ecodist))
-  #suppressPackageStartupMessages(library(Cairo))
-  #suppressPackageStartupMessages(library(gplots))
 
   # define sub functions
   func_usage <- function() {
@@ -33,7 +32,8 @@ plot_pco <- function(
      the distance matrix used to generate the PCoA.
 
      USAGE: MGRAST_plot_pca(
-                            input_matrix = no default arg                            # (string)  input matrix            
+                            input_matrix = no default arg                            # (string) if data is in matrix, name of matrix
+                            file_in = \"my <- file\"                                 # (string) if data is in file, name of file
                             input_dir = \"./\"                                       # (string)  directory(path) of input
                             output_PCoA_dir = \"./\"                                 # (string)  directory(path) for output PCoA file
                             print_dist = 0                                         # (boolean) print the DIST file (distance matrix)
@@ -78,12 +78,18 @@ plot_pco <- function(
     func_usage()
   }
 
-  # load data
-  #input_data_path = gsub(" ", "", paste(input_dir, file_in))
-  #writeLines("INPUT-DATA-PATH")
-  #writeLines(input_data_path)
-  #my_data <<- flipud(rot90(data.matrix(read.table(input_data_path, row.names=1, header=TRUE, sep="\t", comment.char="", quote=""))))
-  my_data <- input_matrix
+  # load data - using matrix or file name
+
+  if (file_name != NULL){
+    input_data_path = gsub(" ", "", paste(input_dir, file_in))
+    writeLines("INPUT-DATA-PATH")
+    writeLines(input_data_path)
+    my_data <- flipud(rot90(data.matrix(read.table(input_data_path, row.names=1, header=TRUE, sep="\t", comment.char="", quote=""))))
+  } else {
+    my_data <- input_matrix
+  }
+  
+  
 
   num_data_rows = dim(my_data)[1] # substitute 0 for NA's if they exist in the data
   num_data_cols = dim(my_data)[2]
