@@ -33,7 +33,7 @@ plot_pco <- function(
 
      USAGE: MGRAST_plot_pca(
                             input_matrix = no default arg                            # (string) if data is in matrix, name of matrix
-                            file_in = \"my <- file\"                                 # (string) if data is in file, name of file
+                            file_in = \"my_file\"                                 # (string) if data is in file, name of file
                             input_dir = \"./\"                                       # (string)  directory(path) of input
                             output_PCoA_dir = \"./\"                                 # (string)  directory(path) for output PCoA file
                             print_dist = 0                                         # (boolean) print the DIST file (distance matrix)
