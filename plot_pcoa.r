@@ -1,6 +1,7 @@
 plot_pco <- function(
                      matrix,
                      file_in = "matrix_object",
+                     samples = sample_names,
                      input_dir = "./",
                      output_PCoA_dir = "./",
                      print_dist = 1,
@@ -80,6 +81,7 @@ plot_pco <- function(
 
   # load data - using matrix or file name
   my_data <<- matrix
+  dimnames(my_data) <- samples
   
   num_data_rows = dim(my_data)[1] # substitute 0 for NA's if they exist in the data
   num_data_cols = dim(my_data)[2]
