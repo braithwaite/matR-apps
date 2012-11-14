@@ -1,5 +1,5 @@
 plot_pco <- function(
-                     matrix = NULL,
+                     matrix,
                      file_in = "matrix_object",
                      input_dir = "./",
                      output_PCoA_dir = "./",
@@ -7,7 +7,7 @@ plot_pco <- function(
                      output_DIST_dir = "./",
                      dist_method = "euclidean",
                      headers = 1,
-                     colors = NULL,
+                     colors = "blue",
                      PC1 = "PC1",
                      PC2 = "PC2"
                      )
@@ -75,10 +75,6 @@ plot_pco <- function(
 
   # stop and give the usage if the proper number of arguments is not given
   if ( nargs() == 0 ){
-    func_usage()
-  }
-
-  if ( matrix == NULL ){
     func_usage()
   }
 
