@@ -138,17 +138,19 @@ plot_pcoa <- function(
   write.table(eigen_vectors, file=PCoA_file_out, col.names=FALSE, row.names=TRUE, append = TRUE, sep="\t")
 
   pdf(file = gsub(" ", "", paste(file_in, ".", dist_method,".PCoA.pdf")))
-    plot(
-         x<-eigen_vectors[,PC1],
-         y<-eigen_vectors[,PC2],     
-         type="n",
-         xlab = scaled_eigen_values[PC1],
-         ylab = scaled_eigen_values[PC2],
-         cex = 0.8
-         )
-    my_cex <- 1
-    points(x=(my_data[,PC1]), y=(my_data[,PC2]), pch=23, col = colors, bg = colors, cex=my_cex) #C
-    title( (paste(file_in,"\n", "PC", PC1, "vs PC", PC2 )), cex.main = 0.8)
-    dev.off()
+  plot(
+       x<-eigen_vectors[,PC1],
+       y<-eigen_vectors[,PC2],     
+       type="n",
+       xlab = scaled_eigen_values[PC1],
+       ylab = scaled_eigen_values[PC2],
+       cex = 0.8
+       )
+  my_cex <- 1
+                                        #points(x=(my_data[,PC1]), y=(my_data[,PC2]), pch=23, col = colors, bg = colors, cex=my_cex) #C
+  points(x=(eigen_vectors[,PC1]), y=(eigen_vectors[,PC2]), pch=23, col = colors, bg = colors, cex=my_cex) #C
+
+  title( (paste(file_in,"\n", "PC", PC1, "vs PC", PC2 )), cex.main = 0.8)
+  dev.off()
   
 }
