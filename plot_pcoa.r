@@ -1,6 +1,6 @@
 plot_pco <- function(
                      input_matrix = NULL,
-                     file_name = "my_file",
+                     file_in = "my_file",
                      input_dir = "./",
                      output_PCoA_dir = "./",
                      print_dist = 1,
@@ -80,7 +80,7 @@ plot_pco <- function(
 
   # load data - using matrix or file name
 
-  if (file_name != NULL){
+  if (file_in != NULL){
     input_data_path = gsub(" ", "", paste(input_dir, file_in))
     writeLines("INPUT-DATA-PATH")
     writeLines(input_data_path)
