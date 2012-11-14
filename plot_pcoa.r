@@ -11,7 +11,7 @@ plot_pco <- function(
                      PC2 = "PC2"
                      )
   
-{   
+{
   # load packages
   suppressPackageStartupMessages(library(matlab))      
   suppressPackageStartupMessages(library(ecodist))
@@ -99,18 +99,9 @@ plot_pco <- function(
   # calculate distance matrix
   dist_matrix <<- find_dist(my_data, dist_method)
   DIST_file_out <- gsub(" ", "", paste(output_DIST_dir, file_in, ".", dist_method, ".DIST"))
-  #if (print_dist > 0) { write_file(file_name = DIST_file_out, data = data.matrix(dist_matrix)) }
-<<<<<<< HEAD
+  # if (print_dist > 0) { write_file(file_name = DIST_file_out, data = data.matrix(dist_matrix)) }
   if (print_dist > 0) { write.table(data.matrix(dist_matrix), file=DIST_file_out, col.names=NA, row.names=TRUE, append = FALSE, sep="\t", quote = FALSE) }
   
-=======
-  if (print_dist > 0) { write.table(data.matrix(dist_matrix), file=DIST_file_out, col.names=NA, row.names=TRUE, append = FALSE, sep="\t", quote = FALSE)
- }
-
-  }
-
-
->>>>>>> df45f7f37ce15c73efef5904908931a01a08532c
   # perform the pco
   my_pco <<- ecodist::pco(dist_matrix)
 
