@@ -81,7 +81,7 @@ plot_pcoa <- function(
 
   # load data - using matrix or file name
   my_data <<- matrix
-  dimnames(my_data)[[1]] <<- samples
+  dimnames(my_data)[[2]] <<- samples
   
   num_data_rows = dim(my_data)[1] # substitute 0 for NA's if they exist in the data
   num_data_cols = dim(my_data)[2]
