@@ -1,4 +1,4 @@
-plot_pco <- function(
+plot_pcoa.from_file <- function(
                             file_in,
                             input_dir = "./",
                             output_PCoA_dir = "./",
