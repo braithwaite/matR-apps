@@ -1,4 +1,4 @@
-plot_pcoa <- function(
+plot_pcoa.from_object <- function(
                      matrix,
                      file_in = "matrix_object",
                      samples = sample_names,
