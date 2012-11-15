@@ -1,4 +1,4 @@
-heatmap_dendrogram <<- function (
+heatmap_dendrogram.from_file <- function (
 
                                  file_in,
                                         #file_out,
