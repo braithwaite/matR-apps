@@ -1,7 +1,7 @@
 plot_pcoa.from_object <- function(
                      matrix,
                      file_in = "matrix_object",
-                     samples = sample_names,
+                     samples = dimnames(matrix)[[2]],
                      input_dir = "./",
                      output_PCoA_dir = "./",
                      print_dist = 1,
