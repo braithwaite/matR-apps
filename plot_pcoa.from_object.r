@@ -141,9 +141,11 @@ plot_pcoa.from_object <- function(
   plot(
        x<-eigen_vectors[,PC1],
        y<-eigen_vectors[,PC2],     
-       type="n",
-       xlab = paste(round(eigen_value.names[PC1], digits = 2), "% of variation"),
-       ylab = paste(round(eigen_value.names[PC2], digits = 2), "% of variation"),
+       type="n",             
+       #xlab = scaled_eigen_values[PC1],          
+       #ylab = scaled_eigen_values[PC2],
+       xlab = paste(round(scaled_eigen_values[PC1], digits = 2), "% of variation"),
+       ylab = paste(round(scaled_eigen_values[PC2], digits = 2), "% of variation"),
        cex = 0.8
        )
   my_cex <- 1
