@@ -4,32 +4,41 @@ setMethod ("+", signature ("collection", "collection"),
 #             rownames (mm) <- mm$Row.names
 #             mm$Row.names <- NULL
 #             as.matrix (mm)
-            
-            if (!identical (viewnames (e1), viewnames(e2)))
-              warning ("only views with names in common will be retained")
 
             cc <- new("collection")
+            mm <- character (0)
+            class (mm) <- "metadata"
             cc@sel <- new ("selection",
-                           ids = append (e1@sel@ids, e2@sel@ids),
-                           groups = as.factor (append (groups (e1), groups (e2))))
-            ### need to fix metadata     metadata = ...,
-            #                            ids.spec = ...,
-            #                            resources.spec = ...,
-            #                            metadata.extent = ...)
-            names (cc) <- append (names (e1), names (e2))
+            							 ids = append (e1@sel@ids, e2@sel@ids),
+            							 groups = as.factor (append (groups (e1), groups (e2))),
+            							 metadata = mm)
+            
+            if (length (metadata (e1)) != 0 && length (metadata (e2)) != 0) 
+            	warning ("dropping metadata")
+
+            n <- sum (is.null (names (e1)), is.null (names (e2)))
+            if (n == 1) warning ("not both collections are named; dropping names")
+            else if (n == 2) names (cc) <- append (names (e1), names (e2))
+
             v <- intersect (viewnames (e1), viewnames (e2))
-            v1 <- views (e1) [v]
-            v2 <- views (e2) [v]
-            if (!identical (v1, v2))
-              warning ("possibly merging views with same name that are not same")
-            cc@views <- v1
-            cc@data <- list()
+            if (!identical (viewnames (e1), viewnames (e2)))
+          		warning ("only views with names in common will be retained: ", paste (v, collapse = ", "))
+
+            cc@views <- list()
             for (j in v) {
-              m <- merge (e1@data [[j]], e2@data [[j]], all = TRUE, by = 0, sort = TRUE)
+            	view <- matR:::view.of.matrix (e1@views [[j]])
+            	if (!identical (view, matR:::view.of.matrix (e2@views [[j]]))) {
+            		warning ("not-same views named same; dropping: ", j)
+            		next
+            	}
+
+            	m <- merge (e1@views [[j]], e2@views [[j]], all = TRUE, by = 0, sort = TRUE)
               rownames (m) <- m$Row.names
               m$Row.names <- NULL
-              cc@data [[j]] <- new ("mmatrix", data = Matrix::Matrix(as.matrix(m)))
+            	m <- as.matrix (m)
+            	attributes (m) [names (view)] <- view
+
+            	cc@views [[j]] <- m
             }
-            viewnames (cc) <- v
             cc
           } )
